@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B3089AB-7154-4DEC-84FA-8AED001E3A9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Catalyst.Core</RootNamespace>
+    <AssemblyName>Catalyst.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Users\rusty\.nuget\packages\Microsoft.AspNet.Mvc\5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivatorServiceProvider.cs" />
+    <Compile Include="Boot\CoreBoot.cs" />
+    <Compile Include="Boot\IBoot.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Caching\CacheProviderBase.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Caching\IRuntimeCacheProvider.cs" />
+    <Compile Include="Caching\NullCacheProvider.cs" />
+    <Compile Include="Caching\RequestCacheProvider.cs" />
+    <Compile Include="Caching\HttpRuntimeCacheProvider.cs" />
+    <Compile Include="Configuration\CatalystVersion.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Constants.Database.cs">
+      <DependentUpon>Constants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.ExtendedProperties.cs">
+      <DependentUpon>Constants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CatalystControllerBase.cs" />
+    <Compile Include="Controllers\EditorControllerBase.cs" />
+    <Compile Include="Controllers\IEditorControllerBase.cs" />
+    <Compile Include="Data\Context\CatalystDbContext.cs" />
+    <Compile Include="Data\Context\ICatalystDbContext.cs" />
+    <Compile Include="Data\GuidComb.cs" />
+    <Compile Include="Data\Initializers\NoSeedDropAlwaysCatalystDbInitializer.cs" />
+    <Compile Include="Data\Initializers\DefaultCatalystDbInitializer.cs" />
+    <Compile Include="Data\Initializers\DropAlwaysCatalystDbInitializer.cs" />
+    <Compile Include="Data\Mapping\ExtendedPropertyDbMapping.cs" />
+    <Compile Include="Data\Migrations\Install\SeedDataHelper.cs" />
+    <Compile Include="Data\Mapping\AddressDbMapping.cs" />
+    <Compile Include="DI\Compositions\TypeRegisterComposition.cs" />
+    <Compile Include="Events\EntityEventArgs.cs" />
+    <Compile Include="Extensions.ExtendedProperty.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.HttpPostedFileBase.cs" />
+    <Compile Include="Extensions.Linq.cs" />
+    <Compile Include="Extensions.Person.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IActivatorServiceProvider.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Domain\IExtendedProperty.cs" />
+    <Compile Include="Models\ICountry.cs" />
+    <Compile Include="Models\PropData\InterestList.cs" />
+    <Compile Include="Mvc\AjaxRouteMappingAttribute.cs" />
+    <Compile Include="Mvc\CheckAjaxRequestAttribute.cs" />
+    <Compile Include="PredicateBuilder.cs" />
+    <Compile Include="Registers\DbMappingRegister.cs" />
+    <Compile Include="Registers\IMappingConfigurationRegister.cs" />
+    <Compile Include="DI\Compositions\DataComposition.cs" />
+    <Compile Include="Data\Mapping\PersonDbMapping.cs" />
+    <Compile Include="DI\Active.cs" />
+    <Compile Include="DI\Compositions\CacheComposition.cs" />
+    <Compile Include="DI\Compositions\ServiceComposition.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions.LightInject.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Logger.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.String.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Models\Domain\Address.cs" />
+    <Compile Include="Models\Domain\EntityBase.cs" />
+    <Compile Include="Models\Domain\ExtendedProperty.cs" />
+    <Compile Include="Models\Domain\IDto.cs" />
+    <Compile Include="Models\Domain\Person.cs" />
+    <Compile Include="Models\Domain\IEntity.cs" />
+    <Compile Include="Models\Domain\IAddress.cs" />
+    <Compile Include="Models\Domain\IPerson.cs" />
+    <Compile Include="Models\PropData\IPropertyValueModel.cs" />
+    <Compile Include="Models\PropData\Photo.cs" />
+    <Compile Include="Models\PropData\SocialLinks.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVisibility.cs" />
+    <Compile Include="Registers\ITypeRegister.cs" />
+    <Compile Include="Services\AddressService.cs" />
+    <Compile Include="Services\AddressService.Query.cs">
+      <DependentUpon>AddressService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CatalystDbContextServiceBase.cs" />
+    <Compile Include="Services\DbContextServiceBase.cs" />
+    <Compile Include="Services\ExtendedPropertyService.cs" />
+    <Compile Include="Services\ExtendedPropertyService.Querying.cs">
+      <DependentUpon>ExtendedPropertyService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IAddressQueryService.cs" />
+    <Compile Include="Services\IAddressService.cs" />
+    <Compile Include="Services\IExtendedPropertyQueryService.cs" />
+    <Compile Include="Services\IExtendedPropertyService.cs" />
+    <Compile Include="Services\IPersonQueryService.cs" />
+    <Compile Include="Services\ISimpleDbContextCrudService.cs" />
+    <Compile Include="Services\IPersonService.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\IServiceContext.cs" />
+    <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\PersonService.Query.cs">
+      <DependentUpon>PersonService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceContext.cs" />
+    <Compile Include="ValueConverters\ConverterAliasAttribute.cs" />
+    <Compile Include="ValueConverters\IConverterMappingInfo.cs" />
+    <Compile Include="ValueConverters\InterestListValueConverter.cs" />
+    <Compile Include="ValueConverters\IPropertyValueConverter.cs" />
+    <Compile Include="Registers\IValueConverterRegister.cs" />
+    <Compile Include="ValueConverters\PhotoValueConverter.cs" />
+    <Compile Include="ValueConverters\PropertyValueConverterBase.cs" />
+    <Compile Include="ValueConverters\SocialLinksValueConverter.cs" />
+    <Compile Include="Registers\ValueConverterRegister.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

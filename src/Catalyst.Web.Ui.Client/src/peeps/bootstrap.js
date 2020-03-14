@@ -1,0 +1,2 @@
+//// Bootstrap Peeps!
+Peeps.init();

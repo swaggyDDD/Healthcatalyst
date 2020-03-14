@@ -1,0 +1,15 @@
+﻿@model Catalyst.Core.Models.PropData.SocialLinks
+<div class="social-bar">
+    @GetSocialLink(Model.Twitter, "Twitter", "fa-twitter-square")
+    @GetSocialLink(Model.Facebook, "Facebook", "fa-facebook-square")
+    @GetSocialLink(Model.GooglePlus, "Google+", "fa-google-plus-square")
+    @GetSocialLink(Model.LinkedIn, "LinkedIn", "fa-linkedin-square")
+    @GetSocialLink(Model.YouTube, "YouTube", "fa-youtube-square")
+</div>
+
+@helper GetSocialLink(string url, string title, string faIcon)
+{
+    if (string.IsNullOrEmpty(url))
+    { return; }
+    <a href="@url" target="_blank" title="@title"><i class="fa @faIcon"></i></a>
+}

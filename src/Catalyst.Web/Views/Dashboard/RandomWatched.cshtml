@@ -1,0 +1,26 @@
+@using Catalyst.Core.Models.PropData
+@model Catalyst.Web.Models.Dashboard.RandomWatch
+@{
+    Layout = "_DashboardItem.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-7">
+        <a href="@Model.Person.Url()">@Model.Person.FullName()</a>
+       
+        @{
+            var adr = Model.Person.Addresses.FirstOrDefault();
+            if (adr != null)
+            {
+                @Html.Partial("_Address", adr)
+            }
+        }
+       
+    </div>
+    <div class="col-xs-5 text-center">
+        @Html.Thumbnail(Model.Person.PhotoUrl(), Catalyst.Web.Constants.PersonEmptyPhoto, Model.Person.FullName(), "img-rounded" , "width=90")
+    </div>
+</div>
+
+@Html.Partial("_SocialLinksBar", Model.Person.GetPropertyValue<SocialLinks>(true))
+    

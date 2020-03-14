@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Catalyst.Core.Models.Domain.Person>
+@{
+    var current = @Request.RawUrl;
+}
+<table class="table table-striped person-table">
+    <thead>
+        <tr>
+            <th class="col-xs-1"></th>
+            <th class="col-xs-3">Name</th>
+            <th class="col-xs-3">Birthday (Age)</th>
+            <th class="col-xs-2 text-center">Watched</th>
+            <th class="col-xs-2">Last Updated</th>
+            <th class="col-xs-1 text-center"></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Any())
+    {
+        foreach (var p in Model)
+        {
+            <tr>
+                <td class="col-xs-1"><a href="@p.Url()">@Html.Thumbnail(p.PhotoUrl(), Catalyst.Web.Constants.PersonEmptyPhoto, p.FullName(), "img-rounded", "width=25")</a></td>
+                <td class="col-xs-3"><a href="@p.Url()">@p.FullName()</a></td>
+                <td class="col-xs-3 date-column">@p.Birthday.ToShortDateString() @($"({p.Age()})")</td>
+                <td class="col-xs-2 text-center">@Html.ActionLink(p.Watch ? "Yes" : "No", "ToggleWatched", "PersonEditor", new { area = "Editors", id = p.Id, r = current }, null)</td>
+                <td class="col-xs-2 date-column">@p.UpdateDateLocal()</td>
+                <td class="col-xs-1 text-center"><a href="@Url.Action("Delete", "PersonEditor", new { aread = "Editors", id = p.Id, r = current })" class="delete-person"><i class="glyphicon glyphicon-trash"></i></a></td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="6">No results</td>
+        </tr>
+    }
+    </tbody>
+</table>

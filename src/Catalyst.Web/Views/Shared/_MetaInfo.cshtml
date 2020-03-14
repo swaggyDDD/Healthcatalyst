@@ -1,0 +1,6 @@
+﻿@model Catalyst.Web.Models.Shared.Meta
+<title>@(Model.PageTitle.IsNullOrWhiteSpace() ? "Catalyst People Problem" : Model.PageTitle)</title>
+@if (!Model.Description.IsNullOrWhiteSpace())
+{
+    <meta name="description" content="@Model.Description" />
+}

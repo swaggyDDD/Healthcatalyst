@@ -1,0 +1,26 @@
+﻿@model Catalyst.Web.Models.Home
+
+<div class="row">
+    <div class="col-sm-12">
+        @Html.Action("RecentlyAdded", "Dashboard")
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        @Html.Action("Placeholder", "Dashboard", new { apiRouteId = Catalyst.Web.Constants.AjaxRouteAliases.CompanySnapshot })
+    </div>
+    <div class="col-sm-4">
+        @Html.Action("Placeholder", "Dashboard", new { apiRouteId = Catalyst.Web.Constants.AjaxRouteAliases.PeoplePropertyStats })
+    </div>
+    <div class="col-sm-4">
+        @Html.Action("Placeholder", "Dashboard", new { apiRouteId = Catalyst.Web.Constants.AjaxRouteAliases.RandomWatched })
+    </div>
+</div>
+
+@section Side {
+    
+    @Html.Action("RichText", "Dashboard", new { title = "Requirements", file = "Home", notes = "Recieved via email" })
+
+}
+
+

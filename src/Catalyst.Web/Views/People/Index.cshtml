@@ -1,0 +1,7 @@
+﻿@model Catalyst.Web.Models.PeopleList
+
+@Html.Action("PeopleList", "Dashboard", new { q = Model.QueryTerm })
+
+@section Side {
+@Html.Action("Placeholder", "Dashboard", new { apiRouteId = Catalyst.Web.Constants.AjaxRouteAliases.AddPerson })
+}

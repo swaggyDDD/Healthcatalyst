@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\data",
+    "\\src",
+    "\\src\\Catalyst.Core",
+    "\\src\\Catalyst.Core\\Mvc",
+    "\\src\\Catalyst.Core\\Properties",
+    "\\src\\Catalyst.Core\\Registers"
+  ],
+  "SelectedNode": "\\src\\Catalyst.Core\\Registers\\DbMappingRegister.cs",
+  "PreviewInSolutionExplorer": false
+}

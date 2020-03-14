@@ -1,0 +1,62 @@
+﻿@using Catalyst.Core.Models.PropData
+@model Catalyst.Web.Models.PersonDetail
+@{
+    var p = Model.Person;
+    var url = Request.RawUrl;
+}
+
+<div class="chart-wrapper" id="person-details" data-person="@Model.Person.Id">
+    <div class="chart-title">
+        Record Details
+    </div>
+    <div class="chart-stage">
+                    
+
+        <h2>@p.FullName() <small><a href="@url"  data-editor="updateperson">(edit)</a></small></h2>
+        <p>Birthday: <time datetime="@p.Birthday.ToString("yyyy-MM-dd")">@p.Birthday.ToString("MMMM d, yyyy")</time></p>
+
+        <hr/>
+
+        <h2>Thumbnail <small><a href="@url" data-editor="photo">(edit)</a></small></h2>
+        @Html.Thumbnail(p.PhotoUrl(), Catalyst.Web.Constants.PersonEmptyPhoto, p.FullName(), "img-thumbnail", "width=100")
+
+        <hr />
+
+        <h2>Interests <small><a href="@url" data-editor="interestlist">(edit)</a></small>
+        </h2>
+        @Html.Partial("_InterestList", p.GetPropertyValue<InterestList>(true))
+
+        <hr/>
+
+        <h2>Social <small><a href="@url" data-editor="sociallinks">(edit)</a></small>
+        </h2>
+        @Html.Partial("_SocialLinksBar", p.GetPropertyValue<SocialLinks>(true))
+                    
+        <hr />
+
+        <h2>Address <small><a href="@url" data-editor="address">(edit)</a></small></h2>
+        @{
+            var adr = p.Addresses.FirstOrDefault();
+            if (adr != null)
+            {
+                @Html.Partial("_Address", adr)
+            }
+        }
+        
+
+    </div>
+    <div class="chart-notes">
+        Notes:
+    </div>
+</div>
+
+
+@section Side {
+    
+@*@Html.Action("EditPerson", "PersonEditor", new { area = "Editors", person = Model.Person })
+@Html.Action("Editor", "PhotoEditor", new { area = "Editors", person = Model.Person })
+@Html.Action("Editor", "InterestEditor", new { area = "Editors", person = Model.Person })
+@Html.Action("Editor", "SocialLinksEditor", new { area = "Editors", person = Model.Person })*@
+@Html.Action("RichText", "Dashboard", new { title = "Person Record Details", file = "PersonDetail", notes = "" })
+
+}

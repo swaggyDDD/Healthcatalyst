@@ -1,0 +1,19 @@
+﻿@using Catalyst.Core.Models.PropData
+@model Catalyst.Core.Models.PropData.InterestList
+
+@if (Model.Values.Any())
+{
+    var comma = false;
+    <p>@foreach (var interest in Model.Values)
+    {
+        @Html.If(comma, ", ")@InterestItem(interest)
+        comma = true;
+    }</p>
+}
+
+@helper InterestItem(Interest i)
+{
+    @Html.If(() => !i.Url.IsNullOrWhiteSpace(), $"<a href=\"{i.Url}\" target=\"_blank\">")
+    @i.Title
+    @Html.If(() => !i.Url.IsNullOrWhiteSpace(), "</a>")
+}

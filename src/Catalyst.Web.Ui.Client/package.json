@@ -1,0 +1,27 @@
+{
+  "name": "catalyst.ui",
+  "version": "1.0.0",
+  "description": "UI scripts for the people problem example",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-minify": "0.0.15",
+    "gulp-msbuild": "^0.4.6",
+    "gulp-plugins": "0.0.17",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "jshint": "^2.9.4",
+    "rimraf": "^2.6.1",
+    "run-sequence": "^1.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rusty Swayne",
+  "license": "UNLICENSED"
+}

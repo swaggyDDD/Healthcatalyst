@@ -1,0 +1,6 @@
+@model Catalyst.Web.Models.Dashboard.RichText
+@{
+    Layout = "_DashboardItem.cshtml";
+}
+
+@Html.Markdown(Model.MarkdownFile, Model.Directory)

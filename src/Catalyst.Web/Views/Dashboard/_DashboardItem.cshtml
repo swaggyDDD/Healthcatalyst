@@ -1,0 +1,15 @@
+@model Catalyst.Web.Models.Dashboard.DashboardItemBase
+@{
+    Layout = null;
+}
+<div class="chart-wrapper"@Html.If(Model.IsAsync, $" data-dashboard=\'{Model.AjaxRouteAlias.ToLowerInvariant()}\'")>
+    <div class="chart-title">
+        @Model.Title @RenderSection("Controls", false)
+    </div>
+    <div class="chart-stage">
+        @RenderBody()
+    </div>
+    <div class="chart-notes">
+        Notes: @Html.If(() => !Model.Notes.IsNullOrWhiteSpace(), Model.Notes)
+    </div>
+</div>

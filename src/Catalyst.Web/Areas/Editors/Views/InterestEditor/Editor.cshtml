@@ -1,0 +1,35 @@
+﻿@model Catalyst.Web.Areas.Editors.Models.InterestListEditor
+    
+@using (Html.BeginForm("Save", "InterestEditor", FormMethod.Post, new { @id = "interests-editor" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.InterestName, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.InterestName)
+        @Html.TextBoxFor(x => x.InterestName, new { @class = "form-control", placeholder = "Interest" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Url, new { @class = "control-label sr-only" })
+        @Html.TextBoxFor(x => x.Url, new { @class = "form-control", placeholder = "Url" })
+    </div>
+    <div class="form-group text-right">
+        <button type="button" class="btn btn-default btn-cancel">Cancel</button>
+        <input type="submit" class="btn btn-default" value="Add" />
+    </div>
+    @Html.HiddenFor(x => x.ReturnUrl)
+    @Html.HiddenFor(x => x.PersonId)
+}
+<div class="form-group">
+    <ul class="list-group">
+        @{
+            var items = Model.InterestList.Values.ToArray();
+            for (var i = 0; i < items.Length; i++)
+            {
+                <li class="list-group-item">@items[i].Title <a href="@Url.Action("Remove", "InterestEditor", new { id = Model.PersonId, idx = i })" class="pull-right interest-trash"><i class="glyphicon glyphicon-trash"></i></a></li>
+            }
+        }
+
+    </ul>
+</div>
+

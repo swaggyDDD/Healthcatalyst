@@ -1,0 +1,27 @@
+﻿@model Catalyst.Web.Models.Dashboard.CountriesSnapshot
+@{
+    Layout = "_DashboardItem.cshtml";
+}
+@if (Model.Metrics.Any())
+{
+    <ul class="list-group">
+        @foreach (var metric in Model.Metrics)
+        {
+            <li class="list-group-item justify-content-between">
+                
+                <a href="@Catalyst.Web.Constants.PeopleRoute" onclick="return false">@metric.Name</a>
+                <span class="badge badge-default badge-pill">@metric.Count</span>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <em>No Data</em>
+    <p>
+        <small>
+            There are no people with associated address in the database.
+        </small>
+    </p>
+}
+

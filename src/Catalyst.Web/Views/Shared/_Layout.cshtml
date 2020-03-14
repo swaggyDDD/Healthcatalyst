@@ -1,0 +1,36 @@
+﻿@model Catalyst.Web.Models.ViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@Html.Partial("_MetaInfo", Model.Meta)
+
+@(Bundle.Css()
+.Add("~/Content/css/bootstrap.min.css")
+.Add("~/Content/css/jquery-ui.min.css")
+.Add("~/Content/css/styles.min.css")
+.MvcRender("~/Content/cache/combined_#.css"))
+
+</head>
+<body class="application">
+
+@Html.Partial("_Header", Model.CurrentTab)
+
+@RenderBody()    
+
+@(Bundle.JavaScript()
+.Add("~/Scripts/jquery.min.js")
+.Add("~/Scripts/jquery-ui.min.js")
+.Add("~/scripts/jquery.validate.min.js")
+.Add("~/scripts/jquery.validate.unobtrusive.min.js")
+.Add("~/Scripts/bootstrap.min.js")
+.Add("~/Scripts/typeahead.bundle.min.js")
+.Add("~/Scripts/lib/underscore.min.js")
+.Add("~/Scripts/lib/catalyst/peeps.min.js")
+.MvcRender("~/Scripts/cache/combined_#.js"))
+
+<div id="peeps"></div>
+</body>
+</html>

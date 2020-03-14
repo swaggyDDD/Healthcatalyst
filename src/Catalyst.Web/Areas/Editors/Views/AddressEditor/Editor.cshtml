@@ -1,0 +1,48 @@
+﻿@model Catalyst.Web.Areas.Editors.Models.AddressEditor
+@using (Html.BeginForm("Save", "AddressEditor", FormMethod.Post, new { @id = "address-editor" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Name for address" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Address1, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.Address1)
+        @Html.TextBoxFor(x => x.Address1, new { @class = "form-control", placeholder = "Address line 1" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Address2, new { @class = "control-label" })
+        @Html.TextBoxFor(x => x.Address2, new { @class = "form-control", placeholder = "Address line 2" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Locality, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.Locality)
+        @Html.TextBoxFor(x => x.Locality, new { @class = "form-control", placeholder = "City or locality" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Region, new { @class = "control-label" })
+        @Html.TextBoxFor(x => x.Region, new { @class = "form-control", placeholder = "State or province" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PostalCode, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.PostalCode)
+        @Html.TextBoxFor(x => x.PostalCode, new { @class = "form-control", placeholder = "Postal code" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.CountryCode, new { @class = "control-label" })
+        @Html.ValidationMessageFor(x => x.CountryCode)
+        @Html.DropDownListFor(x => x.CountryCode, Model.Countries, "Please select", new { @class = "form-control", placeholder = "Postal code" })
+    </div>
+
+    <div class="form-group text-right">
+        <button type="button" class="btn btn-default btn-cancel">Cancel</button>
+        <input type="submit" class="btn btn-default" value="Add" />
+    </div>
+    @Html.HiddenFor(x => x.ReturnUrl)
+    @Html.HiddenFor(x => x.PersonId)
+    @Html.HiddenFor(x => x.AddressId)
+}
